@@ -3,20 +3,23 @@ import {CreateCompany} from '../components/CreateCompany'
 import {ListCompany} from '../components/ListCompany'
 import {CreatePerson} from '../components/CreatePerson'
 import {ListPerson} from '../components/ListPerson'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import AppBar from 'material-ui/AppBar/AppBar';
 
 export class FormsContainer extends Component {
+  
+  
   render() {
     return (
-      <div>
-        <div>
+      <MuiThemeProvider >
+        <AppBar />
+        <div className="grid-container">
           <CreateCompany />
           <ListCompany />
-        </div>          
-        <div>
           <CreatePerson />
           <ListPerson />
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }
