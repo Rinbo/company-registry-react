@@ -31,3 +31,7 @@
   margin: 50px auto;
   border: solid black;
 }
+
+.cr-button-primary {
+  margin: 10px;
+}

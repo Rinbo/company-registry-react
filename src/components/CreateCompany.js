@@ -1,25 +1,22 @@
 import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+import GridList from 'material-ui/GridList'
 
 export class CreateCompany extends Component {
   render() {
     return (
       <div>
-        <h2>Create Company</h2>
+        <h2>Add Company</h2>
         <TextField
           hintText="Enter name of company"
           floatingLabelText="Company name" />
-        <RaisedButton label="Save" primary={true} style={styles.button}/>
+        <br />
+        <RaisedButton label="Save" primary={true} className="cr-button-primary" />
       </div>
     )
   }
 }
 
-const styles = {
-  button: {
-    margin: 10
-  }
-}
 
 export default CreateCompany
