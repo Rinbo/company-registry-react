@@ -12,7 +12,7 @@ export class FormsContainer extends Component {
   render() {
     return (
       <MuiThemeProvider >
-        <AppBar />
+        <AppBar title="Company Registry" />
         <div className="grid-container">
           <CreateCompany />
           <ListCompany />
