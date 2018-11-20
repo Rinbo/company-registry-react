@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
-import GridList from 'material-ui/GridList'
+import {Typography, Grid} from '@material-ui/core/'
 
 export class CreateCompany extends Component {
   render() {
     return (
       <div>
-        <h2>Add Company</h2>
-        <TextField
-          hintText="Enter name of company"
-          floatingLabelText="Company name" />
-        <br />
-        <RaisedButton label="Save" primary={true} className="cr-button-primary" />
+        <Grid container direction="column">
+          <Grid item lg><Typography variant="headline">Add Company</Typography></Grid>
+          <Grid item lg><TextField hintText="Enter name of company" floatingLabelText="Company name" /></Grid>
+          <Grid item lg><RaisedButton label="Save" primary={true} className="cr-button-primary" /></Grid>
+        </Grid>
       </div>
     )
   }

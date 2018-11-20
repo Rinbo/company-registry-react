@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import Typography from '@material-ui/core/Typography'
 
 export class ListCompany extends Component {
   render() {
     return (
-        <h2>List Company Employees</h2>
+      <Typography variant="headline">List Company Employees</Typography>
     )
   }
 }
