@@ -19,8 +19,11 @@ export class FormsContainer extends Component {
   handleCompanySave = e => {
     this.setState({ companies: [...this.state.companies, e] })
   }
-  
-  
+
+  handlePersonSave = e => {
+    this.setState({ people: [...this.state.companies, { name: e[0], company: e[1] }] })
+  }
+    
   render() {
     return (
       <MuiThemeProvider >
@@ -28,8 +31,8 @@ export class FormsContainer extends Component {
         <div className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
           <ListCompany companies={this.state.companies} />
-          <CreatePerson />
-          <ListPerson />
+          <CreatePerson onPersonChange={this.handlePersonSave} />
+          <ListPerson people={this.state.people}/>
         </div>
       </MuiThemeProvider>
     )
