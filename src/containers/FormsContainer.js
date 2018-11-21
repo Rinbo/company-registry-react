@@ -21,7 +21,7 @@ export class FormsContainer extends Component {
   }
 
   handlePersonSave = e => {
-    this.setState({ people: [...this.state.companies, { name: e[0], company: e[1] }] })
+    this.setState({ people: [...this.state.people, { name: e[0], company: e[1] }] })
   }
     
   render() {
@@ -31,7 +31,7 @@ export class FormsContainer extends Component {
         <div className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
           <ListCompany companies={this.state.companies} />
-          <CreatePerson onPersonChange={this.handlePersonSave} />
+          <CreatePerson onPersonSave={this.handlePersonSave} />
           <ListPerson people={this.state.people}/>
         </div>
       </MuiThemeProvider>

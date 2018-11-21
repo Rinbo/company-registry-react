@@ -21,7 +21,7 @@ export class CreatePerson extends Component {
         <Grid container direction="column">
           <Grid item lg><TextField hintText="Enter name of person" floatingLabelText="Person Name" id="person-name" /></Grid>   
           <Grid item lg><SelectField hintText="Select company" id="person-company" /></Grid> 
-          <Grid item lg><RaisedButton label="Save" primary={true} className="cr-button-primary" /></Grid>           
+          <Grid item lg><RaisedButton label="Save" primary={true} className="cr-button-primary" onClick={this.handlePersonSave} /></Grid>           
         </Grid>
       </div>
     )
