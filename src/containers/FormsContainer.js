@@ -31,7 +31,7 @@ export class FormsContainer extends Component {
         <div className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
           <ListCompany companies={this.state.companies} />
-          <CreatePerson onPersonSave={this.handlePersonSave} />
+          <CreatePerson onPersonSave={this.handlePersonSave} companies={this.state.companies}/>
           <ListPerson people={this.state.people}/>
         </div>
       </MuiThemeProvider>

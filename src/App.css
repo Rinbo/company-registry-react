@@ -16,3 +16,8 @@
 .cr-button-primary {
   margin: 10px;
 }
+
+.cr-dropdown {
+  width: 220px;
+  margin: 15px;
+}
