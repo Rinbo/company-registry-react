@@ -6,9 +6,9 @@ import {Typography, Grid} from '@material-ui/core/'
 export class CreateCompany extends Component {
 
   handleCompanySave = () =>{
-    const formElement = document.getElementById('company-name')
-    this.props.onCompanySave(formElement.value)
-    formElement.value=""
+    const companyNameElement = document.getElementById('company-name')
+    this.props.onCompanySave(companyNameElement.value)
+    companyNameElement.value=""
   }
 
   render() {
