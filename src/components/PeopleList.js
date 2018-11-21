@@ -6,17 +6,16 @@ export class PeopleList extends Component {
   
   
   render() {
-
+    
     const company = this.props.companySelect
-
-    const peopleList = this.props.people.map((person) => {
+    const peopleList = this.props.people.map((person) => {      
       if (person.company === company) {
         return (              
           <ListItem key={person.company}>
             <ListItemIcon>
-              <PersonIcon />
+              <PersonIcon  />
             </ListItemIcon>
-            <ListItemText primary={person.name} />
+            <ListItemText primary={person.name}/>
           </ListItem>        
         )
       } else {return ""}
@@ -24,7 +23,7 @@ export class PeopleList extends Component {
 
     return (
       <Fragment>
-        <List>{peopleList}</List>
+        <List style={{paddingLeft: 50}} dense={true}>{peopleList}</List>
       </Fragment>
     )
   }

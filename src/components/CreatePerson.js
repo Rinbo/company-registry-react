@@ -26,7 +26,7 @@ export class CreatePerson extends Component {
     
     return (
       <div>
-        <Typography variant="headline">Add people</Typography>
+        <Typography variant="headline" className="cr-heading">Add people</Typography>
         <Grid container direction="column">
           <Grid item lg><TextField hintText="Enter name of person" floatingLabelText="Person Name" id="person-name" /></Grid>   
           <Grid item lg>            

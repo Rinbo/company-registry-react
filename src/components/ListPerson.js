@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import Typography from '@material-ui/core/Typography'
+import { Typography, List, ListItem, Grid } from '@material-ui/core'
 
 export class ListPerson extends Component {
   render() {
 
-    const listPeople = this.props.people.map((person) => {
-    return <li key={person.name}>{person.name} | {person.company}</li>
+    const peopleList = this.props.people.map((person) => {
+    return (<ListItem key={person.name}>{person.name} | {person.company}</ListItem>)
     })
 
     return (
       <div>
-      <Typography variant="headline">Add people</Typography>
-      <ul>{listPeople}</ul>
+        <Grid container direction="column">
+          <Grid item lg className="cr-heading"><Typography variant="headline" className="cr-heading">List of people</Typography></Grid>
+          <Grid item lg><List style={{paddingLeft: 50}} dense={true}>{peopleList}</List></Grid>
+        </Grid>
       </div>
     )
   }
