@@ -37,25 +37,23 @@ export class CreatePerson extends Component {
         <Grid container direction="column">
           <Grid item lg><TextField hintText="Enter name of person" floatingLabelText="Person Name" id="person-name" /></Grid>   
           <Grid item lg>            
-            <form autoComplete="off">
-              <FormControl>
-                <InputLabel htmlFor="person-company">Select Company</InputLabel>
-                <Select 
-                  className="cr-dropdown"
-                  value={this.state.company}
-                  onChange={this.handleChange}           
-                  inputProps={{
-                    company: 'company',
-                    id: 'person-company',
-                  }}
-                  >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  {companyList}
-                </Select>
-              </FormControl>
-            </form>
+            <FormControl>
+            <InputLabel htmlFor="person-company">Select Company</InputLabel>
+              <Select 
+                className="cr-dropdown"
+                value={this.state.company}
+                onChange={this.handleChange}           
+                inputProps={{
+                  company: 'company',
+                  id: 'person-company',
+                }}
+                >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {companyList}
+              </Select>
+            </FormControl>            
           </Grid> 
           <Grid item lg><RaisedButton label="Save" primary={true} className="cr-button-primary" onClick={this.handlePersonSave} /></Grid>           
         </Grid>
