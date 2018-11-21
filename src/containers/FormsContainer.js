@@ -15,12 +15,17 @@ export class FormsContainer extends Component {
         {name: "Sixten Börjesson", company: "Saab" }
       ],
       companies: ["Volvo", "Saab"],
-      company: ""
+      companySelect: "",
+      companyInput: ""
     }
   }
 
   handleCompanyChange = e => {
-    this.setState({company: e.target.value})
+    this.setState({companySelect: e.target.value})
+  }
+
+  handleCompanyInput = e => {
+    this.setState({companyInput: e.target.value})
   }
 
   handleCompanySave = e => {
@@ -37,8 +42,8 @@ export class FormsContainer extends Component {
         <AppBar title="Company Registry" />
         <div className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
-          <ListCompany companies={this.state.companies} people={this.state.people} onCompanyChange={this.handleCompanyChange} company={this.state.company}/>
-          <CreatePerson onPersonSave={this.handlePersonSave} companies={this.state.companies} onCompanyChange={this.handleCompanyChange} company={this.state.company}/>
+          <ListCompany companies={this.state.companies} people={this.state.people} onCompanyChange={this.handleCompanyChange} companySelect={this.state.companySelect}/>
+          <CreatePerson onPersonSave={this.handlePersonSave} companies={this.state.companies} onCompanyChange={this.handleCompanyInput} companyInput={this.state.companyInput} companySelect={this.companySelect}/>
           <ListPerson people={this.state.people}/>
         </div>
       </MuiThemeProvider>

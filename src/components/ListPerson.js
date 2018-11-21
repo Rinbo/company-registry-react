@@ -5,7 +5,7 @@ export class ListPerson extends Component {
   render() {
 
     const listPeople = this.props.people.map((person) => {
-    return <li>{person.name} | {person.company}</li>
+    return <li key={person.name}>{person.name} | {person.company}</li>
     })
 
     return (

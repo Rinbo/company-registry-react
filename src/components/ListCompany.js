@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Typography, List, ListItem, ListItemIcon, ListItemText, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core'
-import PersonIcon from '@material-ui/icons/Person'
+import { Typography, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core'
+import PeopleList from './PeopleList'
+
 
 
 export class ListCompany extends Component {
@@ -12,23 +13,8 @@ export class ListCompany extends Component {
 
   render() {
 
-    const {company} = this.props.company
-
     const companyList = this.props.companies.map((c) => {
-      return <MenuItem value={c}>{c}</MenuItem>
-    })
-
-    const peopleList = this.props.people.map((person) => {
-      if (person.company === {company}) {
-        return (              
-          <ListItem>
-            <ListItemIcon>
-              <PersonIcon />
-            </ListItemIcon>
-            <ListItemText primary={person.name} />
-          </ListItem>        
-        )
-      } else {return ""}
+      return <MenuItem value={c} key={c}>{c}</MenuItem>
     })
 
     return (
@@ -38,7 +24,7 @@ export class ListCompany extends Component {
           <InputLabel htmlFor="company-list">Select Company</InputLabel>
           <Select 
             className="cr-dropdown"
-            value={this.props.company}
+            value={this.props.companySelect}
             onChange={this.handleChange}           
             inputProps={{
               company: 'company',
@@ -51,7 +37,8 @@ export class ListCompany extends Component {
             {companyList}
           </Select>
         </FormControl>
-        <List>{peopleList}</List>
+        <PeopleList companySelect={this.props.companySelect} people={this.props.people} />
+        
       </div>
     )
   }
