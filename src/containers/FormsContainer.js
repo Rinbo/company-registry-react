@@ -7,13 +7,20 @@ import AppBar from 'material-ui/AppBar/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export class FormsContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      people: [
+        {name: "Robin Börjesson", company: "Volvo" },
+        {name: "Sixten Börjesson", company: "Saab" }
+      ],
+      companies: ["Volvo", "Saab"],
+      company: ""
+    }
+  }
 
-  state = {
-    people: [
-      {name: "Robin Börjesson", company: "Volvo" },
-      {name: "Sixten Börjesson", company: "Saab" }
-    ],
-    companies: ["Volvo", "Saab"]
+  handleCompanyChange = e => {
+    this.setState({company: e.target.value})
   }
 
   handleCompanySave = e => {
@@ -30,8 +37,8 @@ export class FormsContainer extends Component {
         <AppBar title="Company Registry" />
         <div className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
-          <ListCompany companies={this.state.companies} />
-          <CreatePerson onPersonSave={this.handlePersonSave} companies={this.state.companies}/>
+          <ListCompany companies={this.state.companies} people={this.state.people} onCompanyChange={this.handleCompanyChange} company={this.state.company}/>
+          <CreatePerson onPersonSave={this.handlePersonSave} companies={this.state.companies} onCompanyChange={this.handleCompanyChange} company={this.state.company}/>
           <ListPerson people={this.state.people}/>
         </div>
       </MuiThemeProvider>

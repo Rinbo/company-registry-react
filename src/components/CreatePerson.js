@@ -4,11 +4,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 import {Typography, Grid, Select, FormControl, InputLabel, MenuItem} from '@material-ui/core'
 
 export class CreatePerson extends Component {
-  
-  state = {
-    company: "",
-    labelWidth: 20
-  };
 
   handlePersonSave = () =>{
     const personNameElement = document.getElementById('person-name')
@@ -19,10 +14,9 @@ export class CreatePerson extends Component {
   }
 
   handleChange = e => {
-    this.setState({ company: e.target.value });
+    e.preventDefault()
+    this.props.onCompanyChange(e)
   };
-
-
 
   render() {
 
@@ -38,10 +32,10 @@ export class CreatePerson extends Component {
           <Grid item lg><TextField hintText="Enter name of person" floatingLabelText="Person Name" id="person-name" /></Grid>   
           <Grid item lg>            
             <FormControl>
-            <InputLabel htmlFor="person-company">Select Company</InputLabel>
+              <InputLabel htmlFor="person-company">Select Company</InputLabel>
               <Select 
                 className="cr-dropdown"
-                value={this.state.company}
+                value={this.props.company}
                 onChange={this.handleChange}           
                 inputProps={{
                   company: 'company',
