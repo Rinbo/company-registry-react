@@ -14,8 +14,8 @@ export class CreateCompany extends Component {
       <div>
         <Grid container direction="column">
           <Grid item lg><Typography variant="headline" className="cr-heading">Add Company</Typography></Grid>
-          <Grid item lg><TextField hintText="Enter name of company" floatingLabelText="Company name" id="company-name"/></Grid>
-          <Grid item lg><Button variant="contained" label="Save" primary={true} className="cr-button-primary" onClick={this.handleCompanySave } /></Grid>
+          <Grid item lg><TextField label="Enter Company Name" placeholder="Company Name" id="company-name" margin="normal" /></Grid>
+          <Grid item lg><Button variant="contained" color="primary" className="cr-button-primary" onClick={this.handleCompanySave}>Save</Button></Grid>
         </Grid>
       </div>
     )

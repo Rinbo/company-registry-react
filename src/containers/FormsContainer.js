@@ -51,7 +51,7 @@ export class FormsContainer extends Component {
   render() {
     return (
       <div >
-        <AppBar />
+        <AppBar color="primary" title="Company Registry"/>
         <Paper className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
           <ListContainer 

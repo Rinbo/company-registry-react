@@ -45,7 +45,7 @@ export class EmployeeList extends Component {
         <div>
           <Typography variant="headline">Employees of {company}</Typography>
           <List style={{paddingLeft: 50}} dense={true} id="employee-list">{employeeList}</List>
-          <Button variant="contained" onClick={this.handleViewSelect}>Back</Button>
+          <Button variant="contained" color="primary" onClick={this.handleViewSelect}>Back</Button>
         </div>      
     )
   }
