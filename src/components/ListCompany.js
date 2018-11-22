@@ -13,8 +13,8 @@ export class ListCompany extends Component {
 
   render() {
 
-    const companyList = this.props.companies.map((c) => {
-      return <MenuItem value={c} key={c}>{c}</MenuItem>
+    const companyList = this.props.companies.map((company) => {
+      return <MenuItem value={company} key={company}>{company}</MenuItem>
     })
 
     return (
@@ -41,7 +41,7 @@ export class ListCompany extends Component {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item lg><PeopleList companySelect={this.props.companySelect} people={this.props.people} /></Grid>
+          <Grid item lg><PeopleList companySelect={this.props.companySelect} people={this.props.people} onPersonDelete={this.props.onPersonDelete} /></Grid>
         </Grid>
         
       </div>

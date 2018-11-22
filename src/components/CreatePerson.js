@@ -8,7 +8,10 @@ export class CreatePerson extends Component {
   handlePersonSave = () => {
     const personNameElement = document.getElementById('person-name')
     const personCompanyElement = document.getElementById('person-company')
-    this.props.onPersonSave([personNameElement.value, personCompanyElement.value])
+    this.props.onPersonSave({
+      name: personNameElement.value, 
+      company: personCompanyElement.value
+    })
     personNameElement.value=""
   }
 
