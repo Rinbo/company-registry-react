@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { CreateCompany } from '../components/CreateCompany'
 import { ListCompany } from '../components/ListCompany'
 import { CreatePerson } from '../components/CreatePerson'
-import { ListPerson } from '../components/ListPerson'
+import { PeopleList } from '../components/PeopleList'
 import AppBar from 'material-ui/AppBar/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Paper} from '@material-ui/core'
@@ -66,7 +66,7 @@ export class FormsContainer extends Component {
         </Paper>
         <Paper className="grid-container">
           <CreatePerson onPersonSave={this.handlePersonSave} companies={this.state.companies} onCompanyChange={this.handleCompanyInput} companyInput={this.state.companyInput} companySelect={this.companySelect}/>
-          <ListPerson people={this.state.people}/>
+          <PeopleList people={this.state.people}/>
         </Paper>
       </MuiThemeProvider>
     )

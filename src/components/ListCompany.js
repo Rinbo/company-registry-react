@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {CompanyList} from './CompanyList'
-import {PeopleList} from './PeopleList'
+import {EmployeeList} from './EmployeeList'
 
 export class ListCompany extends Component {
 
@@ -26,7 +26,7 @@ export class ListCompany extends Component {
     if (this.state.view === 0) {
       return <CompanyList companies={this.props.companies} onCompanySelect={this.handleCompanySelect} />
     } else {
-      return <PeopleList 
+      return <EmployeeList 
         company={this.state.company} 
         people={this.props.people} 
         onViewSelect={this.handleViewSelect}
