@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
-import {Typography, Grid, Select, FormControl, InputLabel, MenuItem} from '@material-ui/core'
+import {Typography, Grid, Select, FormControl, InputLabel, MenuItem, TextField, Button} from '@material-ui/core'
 
 export class CreatePerson extends Component {
 
@@ -51,7 +49,7 @@ export class CreatePerson extends Component {
               </Select>
             </FormControl>
           </Grid> 
-          <Grid item lg><RaisedButton label="Save" primary={true} className="cr-button-primary" onClick={this.handlePersonSave} /></Grid>           
+          <Grid item lg><Button variant="contained" label="Save" primary={true} className="cr-button-primary" onClick={this.handlePersonSave} /></Grid>           
         </Grid>
       </div>
     )

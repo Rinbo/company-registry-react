@@ -3,9 +3,7 @@ import { CreateCompany } from '../components/CreateCompany'
 import { ListContainer } from './ListContainer'
 import { CreatePerson } from '../components/CreatePerson'
 import { PeopleList } from '../components/PeopleList'
-import AppBar from 'material-ui/AppBar/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Paper} from '@material-ui/core'
+import {Paper, AppBar} from '@material-ui/core'
 
 export class FormsContainer extends Component {
   constructor(props) {
@@ -52,8 +50,8 @@ export class FormsContainer extends Component {
     
   render() {
     return (
-      <MuiThemeProvider >
-        <AppBar title="Company Registry" />
+      <div >
+        <AppBar />
         <Paper className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
           <ListContainer 
@@ -68,7 +66,7 @@ export class FormsContainer extends Component {
             companyInput={this.state.companyInput} />
           <PeopleList people={this.state.people}/>
         </Paper>
-      </MuiThemeProvider>
+      </div>
     )
   }
 }
