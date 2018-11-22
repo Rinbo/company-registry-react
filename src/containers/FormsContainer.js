@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { CreateCompany } from '../components/CreateCompany'
-import { ListCompany } from '../components/ListCompany'
+import { ListContainer } from './ListContainer'
 import { CreatePerson } from '../components/CreatePerson'
 import { PeopleList } from '../components/PeopleList'
 import AppBar from 'material-ui/AppBar/AppBar';
@@ -62,7 +62,7 @@ export class FormsContainer extends Component {
         <AppBar title="Company Registry" />
         <Paper className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
-          <ListCompany companies={this.state.companies} people={this.state.people} onCompanyChange={this.handleCompanyChange} companySelect={this.state.companySelect} onPersonDelete={this.handlePersonDelete}/>
+          <ListContainer companies={this.state.companies} people={this.state.people} onCompanyChange={this.handleCompanyChange} companySelect={this.state.companySelect} onPersonDelete={this.handlePersonDelete}/>
         </Paper>
         <Paper className="grid-container">
           <CreatePerson onPersonSave={this.handlePersonSave} companies={this.state.companies} onCompanyChange={this.handleCompanyInput} companyInput={this.state.companyInput} companySelect={this.companySelect}/>

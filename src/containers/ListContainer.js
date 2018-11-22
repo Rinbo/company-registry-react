@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {CompanyList} from './CompanyList'
-import {EmployeeList} from './EmployeeList'
+import {CompanyList} from '../components/CompanyList'
+import {EmployeeList} from '../components/EmployeeList'
 
-export class ListCompany extends Component {
+export class ListContainer extends Component {
 
   constructor(props) {
     super(props)
@@ -35,4 +35,4 @@ export class ListCompany extends Component {
   }
 }
 
-export default ListCompany
+export default ListContainer
