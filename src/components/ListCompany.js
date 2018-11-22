@@ -1,51 +1,37 @@
 import React, { Component } from 'react'
-import { Typography, Select, FormControl, InputLabel, MenuItem, Grid } from '@material-ui/core'
-import PeopleList from './PeopleList'
-
-
+import {CompanyList} from './CompanyList'
+import {PeopleList} from './PeopleList'
 
 export class ListCompany extends Component {
 
-  handleChange = e => {
-    e.preventDefault()
-    this.props.onCompanyChange(e)
+  constructor(props) {
+    super(props)
+    this.handleCompanySelect = this.handleCompanySelect.bind(this)
+    this.handleViewSelect = this.handleViewSelect.bind(this)
+    this.state = {
+      view: 0,
+      company: ""
+    }
+  }
+
+  handleCompanySelect = company => {
+    this.setState({ company: company, view: 1 })
   };
 
+  handleViewSelect = () => {    
+    this.setState({view: 0})
+  }
+
   render() {
-
-    const companyList = this.props.companies.map((company) => {
-      return <MenuItem value={company} key={company}>{company}</MenuItem>
-    })
-
-    return (
-      <div>
-
-        <Typography variant="headline" className="cr-heading">List Company Employees</Typography>
-        <Grid container direction="column">
-          <Grid item lg>
-            <FormControl>
-              <InputLabel htmlFor="company-list">Select Company</InputLabel>
-              <Select 
-                className="cr-dropdown"
-                value={this.props.companySelect}
-                onChange={this.handleChange}           
-                inputProps={{
-                  company: 'company',
-                  id: 'company-list',
-                }}
-                >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                {companyList}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item lg><PeopleList companySelect={this.props.companySelect} people={this.props.people} onPersonDelete={this.props.onPersonDelete} /></Grid>
-        </Grid>
-        
-      </div>
-    )
+    if (this.state.view === 0) {
+      return <CompanyList companies={this.props.companies} onCompanySelect={this.handleCompanySelect} />
+    } else {
+      return <PeopleList 
+        company={this.state.company} 
+        people={this.props.people} 
+        onViewSelect={this.handleViewSelect}
+        onPersonDelete={ this.props.onPersonDelete } />
+    }
   }
 }
 

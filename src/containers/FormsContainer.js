@@ -44,9 +44,16 @@ export class FormsContainer extends Component {
   }
 
   handlePersonDelete = person => {
-    this.setState(prevState => ({
-      people: [...prevState.people, person]
-    }))
+    let peopleArray = this.state.people
+    peopleArray.map( e => {
+      if (e === person) {
+        e.company = ""
+        return e
+      } else {
+        return e
+      }
+    })
+    this.setState({people: peopleArray})
   }
     
   render() {
