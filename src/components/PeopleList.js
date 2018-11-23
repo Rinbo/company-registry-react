@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
-import { Typography, List, ListItem, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@material-ui/core'
+import PeopleTable from './PeopleTable'
 
 export class PeopleList extends Component {
   render() {
-
-    const peopleList = this.props.people.map((person) => {
-    return (<ListItem key={person.name}>{person.name} | {person.company}</ListItem>)
-    })
 
     return (
       <div>
         <Grid container direction="column">
           <Grid item lg className="cr-heading"><Typography variant="headline" className="cr-heading">List of people</Typography></Grid>
-          <Grid item lg><List style={{paddingLeft: 50}} dense={true}>{peopleList}</List></Grid>
+          <Grid item lg><PeopleTable people={this.props.people} /></Grid>
         </Grid>
       </div>
     )

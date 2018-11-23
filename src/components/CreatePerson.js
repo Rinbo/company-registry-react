@@ -49,7 +49,7 @@ export class CreatePerson extends Component {
               </Select>
             </FormControl>
           </Grid> 
-          <Grid item lg><Button color="primary" variant="contained" className="cr-button-primary" onClick={this.handlePersonSave}>Save</Button></Grid>           
+          <Grid item lg><Button color="primary" variant="contained" onClick={this.handlePersonSave}>Save</Button></Grid>           
         </Grid>
       </div>
     )
