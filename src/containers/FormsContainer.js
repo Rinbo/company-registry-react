@@ -3,7 +3,8 @@ import { CreateCompany } from '../components/CreateCompany'
 import { ListContainer } from './ListContainer'
 import { CreatePerson } from '../components/CreatePerson'
 import { PeopleList } from '../components/PeopleList'
-import {Paper, AppBar} from '@material-ui/core'
+import { CrAppBar } from '../components/CrAppBar'
+import { Paper } from '@material-ui/core'
 
 export class FormsContainer extends Component {
   constructor(props) {
@@ -63,7 +64,7 @@ export class FormsContainer extends Component {
   render() {
     return (
       <div >
-        <AppBar color="primary" title="Company Registry"/>
+        <CrAppBar title="Company Registry"/>
         <Paper className="grid-container">
           <CreateCompany onCompanySave={this.handleCompanySave} />
           <ListContainer 
