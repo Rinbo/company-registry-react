@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Typography, List, ListItem, ListItemIcon, ListItemText, Grid } from '@material-ui/core'
+import { Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import BusinessIcon from '@material-ui/icons/Business'
 
 export class CompanyList extends Component {
@@ -17,7 +17,7 @@ export class CompanyList extends Component {
 
     const listCompanies = this.props.companies.map((company) => {
       return (
-        <ListItem className="cr-company-list-item" button onClick={() => this.handleCompanySelect(company)}>
+        <ListItem key={company} button onClick={() => this.handleCompanySelect(company)}>
           <ListItemIcon>
             <BusinessIcon />
           </ListItemIcon>
