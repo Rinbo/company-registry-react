@@ -5,3 +5,7 @@
 - Create a person entry and associate that person with an available company
 - List people
 - List employees of a particular company
+- Data is stored in browser local storage
+
+## Gh-pages link
+- https://rinbo.github.io/company-registry-react/
