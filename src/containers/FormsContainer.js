@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { CreateCompany } from '../components/CreateCompany'
 import { ListContainer } from './ListContainer'
-import { CreatePerson } from '../components/CreatePerson'
+import { PersonContainer } from './PersonContainer'
 import { PeopleList } from '../components/PeopleList'
 import { CrAppBar } from '../components/CrAppBar'
 import { Paper } from '@material-ui/core'
@@ -73,7 +73,8 @@ export class FormsContainer extends Component {
             onPersonDelete={this.handlePersonDelete}/>
         </Paper>
         <Paper className="grid-container">
-          <CreatePerson onPersonSave={this.handlePersonSave} 
+          <PersonContainer 
+            onPersonSave={this.handlePersonSave} 
             companies={this.state.companies} 
             onCompanyChange={this.handleCompanyInput} 
             companyInput={this.state.companyInput} />

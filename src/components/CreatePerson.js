@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Typography, Grid, Select, FormControl, InputLabel, MenuItem, TextField, Button} from '@material-ui/core'
+import { Grid, TextField, Button} from '@material-ui/core'
+import CompanyMenu from './CompanyMenu';
 
 export class CreatePerson extends Component {
 
@@ -13,43 +14,13 @@ export class CreatePerson extends Component {
     personNameElement.value=""
   }
 
-  handleChange = e => {
-    e.preventDefault()
-    this.props.onCompanyChange(e)
-  };
-
   render() {
-
-    const companyList = this.props.companies.map((company) => {
-      return <MenuItem value={company} key={company}>{company}</MenuItem>
-    })
-
-    
     return (
       <div>
-        <Typography variant="headline" className="cr-heading">Add people</Typography>
         <Grid container direction="column">
           <Grid item lg><TextField label="Enter Name of Person" placeholder="Name" margin="normal" id="person-name" /></Grid>   
-          <Grid item lg>            
-            <FormControl>              
-              <InputLabel htmlFor="person-company">Select Company</InputLabel>
-              <Select 
-                className="cr-dropdown"
-                value={this.props.companyInput}
-                onChange={this.handleChange}           
-                inputProps={{
-                  company: 'company',
-                  id: 'person-company',
-                }}
-                >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                {companyList}
-              </Select>
-            </FormControl>
-          </Grid> 
-          <Grid item lg><Button color="primary" variant="contained" onClick={this.handlePersonSave}>Save</Button></Grid>           
+          <Grid item lg><CompanyMenu companyList={this.props.companyList} onCompanyChange={this.props.onCompanyChange} companyInput={this.props.companyInput}/></Grid> 
+          <Grid item lg><Button color="primary" variant="contained" onClick={this.handlePersonSave}>Create</Button></Grid>           
         </Grid>
       </div>
     )
