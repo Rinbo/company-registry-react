@@ -26,7 +26,7 @@ export class EmployeeList extends Component {
     const employeeList = this.props.people.map((person) => {
       if (person.company === company) {
         return (              
-          <ListItem>
+          <ListItem >
             <ListItemIcon>
               <PersonIcon  />
             </ListItemIcon>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import { Typography, List, ListItem, ListItemIcon, ListItemText, Grid } from '@material-ui/core'
 import BusinessIcon from '@material-ui/icons/Business'
 
 export class CompanyList extends Component {
@@ -16,20 +16,20 @@ export class CompanyList extends Component {
   render() {
 
     const listCompanies = this.props.companies.map((company) => {
-      return (       
-          <ListItem button onClick={() => this.handleCompanySelect(company)}>
-            <ListItemIcon>
-              <BusinessIcon />
-            </ListItemIcon>
-            <ListItemText primary={company} />
-          </ListItem>        
+      return (
+        <ListItem className="cr-company-list-item" button onClick={() => this.handleCompanySelect(company)}>
+          <ListItemIcon>
+            <BusinessIcon />
+          </ListItemIcon>
+          <ListItemText primary={company} />
+        </ListItem>
       )
     })
 
     return (
       <div>
         <Typography variant="headline">Companies</Typography>
-        <List>{listCompanies}</List>
+        <List className="cr-company-list">{listCompanies}</List>
       </div>
     )
   }
