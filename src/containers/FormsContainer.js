@@ -47,7 +47,19 @@ export class FormsContainer extends Component {
     })
     this.setState({people: peopleArray})
   }
-    
+
+  componentWillMount = () => {
+    localStorage.getItem('savedState') && this.setState({
+      people: JSON.parse(localStorage.getItem('savedState')).people,
+      companies: JSON.parse(localStorage.getItem('savedState')).companies
+    })
+  }
+  
+
+  componentWillUpdate = (nextProps, nextState) => {
+    localStorage.setItem('savedState', JSON.stringify(nextState))    
+  }
+      
   render() {
     return (
       <div >
