@@ -4,23 +4,56 @@ import CompanyMenu from './CompanyMenu';
 
 export class CreatePerson extends Component {
 
-  handlePersonCreate = () => {
-    const personNameElement = document.getElementById('person-name')
-    const personCompanyElement = document.getElementById('person-company')
-    this.props.onPersonCreate({
-      name: personNameElement.value, 
-      company: personCompanyElement.value
-    })
-    personNameElement.value=""
+  constructor(props) {
+    super(props)
+    this.state = {      
+      company: "",
+      person: ""
+    }
+    this.handlePersonCreate = this.handlePersonCreate.bind(this)
+    this.handlePersonChange = this.handlePersonChange.bind(this)
+    this.handleCompanyChange = this.handleCompanyChange.bind(this)
+  } 
+  
+  handlePersonChange = (e) => {
+    this.setState({person: e.target.value})
+  }
+
+  handleCompanyChange = (e) => {
+    this.setState({company: e.target.value})
+  }
+
+  handlePersonCreate = () => {    
+    this.props.onPersonCreate({name: this.state.person, company: this.state.company})
+    this.setState({person: "", company: ""})   
   }
 
   render() {
     return (
       <div>
         <Grid container direction="column">
-          <Grid item lg><TextField label="Enter Name of Person" placeholder="Name" margin="normal" id="person-name" /></Grid>   
-          <Grid item lg><CompanyMenu companyList={this.props.companyList} onCompanyChange={this.props.onCompanyChange} companyInput={this.props.companyInput}/></Grid> 
-          <Grid item lg><Button color="primary" variant="contained" onClick={this.handlePersonCreate}>Create</Button></Grid>           
+          <Grid item lg>
+            <TextField 
+              label="Enter Name of Person" 
+              value={this.state.person} 
+              placeholder="Name" 
+              margin="normal" 
+              onChange={this.handlePersonChange} />
+          </Grid>   
+          <Grid item lg>
+            <CompanyMenu 
+              companyList={this.props.companyList} 
+              onCompanyChange={this.handleCompanyChange} 
+              companyInput={this.state.company}/>
+          </Grid> 
+          <Grid item lg>
+            <Button 
+              color="primary" 
+              variant="contained" 
+              onClick={this.handlePersonCreate}>
+              Create
+            </Button>
+          </Grid>           
         </Grid>
       </div>
     )

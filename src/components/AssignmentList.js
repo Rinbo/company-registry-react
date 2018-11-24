@@ -29,7 +29,7 @@ export class AssignmentList extends Component {
 
   handleCompanyAssign = () => {
     this.props.onCompanyAssign({name: this.state.person, company: this.state.company})
-    this.setState({view: 0})   
+    this.setState({view: 0, person: "", company: ""})   
   }
  
 
@@ -53,9 +53,28 @@ export class AssignmentList extends Component {
     } else {
       return ( 
         <Grid container direction="column">
-          <Grid item lg><Typography variant="headline" className="cr-heading">{this.state.person}</Typography></Grid>
-          <Grid item lg><CompanyMenu companyList={this.props.companyList} onCompanyChange={this.handleCompanyChange} companyInput={this.state.company}/></Grid> 
-          <Grid item lg><Button variant="contained" color="primary" className="cr-button-primary" onClick={this.handleCompanyAssign}>Save</Button></Grid>
+          <Grid item lg>
+            <Typography 
+              variant="h5" 
+              className="cr-heading">
+                {this.state.person}
+            </Typography>
+          </Grid>
+          <Grid item lg>
+            <CompanyMenu 
+              companyList={this.props.companyList} 
+              onCompanyChange={this.handleCompanyChange} 
+              companyInput={this.state.company}/>
+          </Grid> 
+          <Grid item lg>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              className="cr-button-primary" 
+              onClick={this.handleCompanyAssign}>
+                Save
+              </Button>
+            </Grid>
         </Grid>
       )
     }
