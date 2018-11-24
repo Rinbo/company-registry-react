@@ -30,7 +30,7 @@ export class PeopleList extends Component {
     this.setState({ value: index });
   };  
 
-  render() {
+  render() {    
     const assignedPeople = this.props.people.filter(person => person.company !== "")
     return (
       <div style={{padding: 0}}>

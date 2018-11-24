@@ -8,7 +8,7 @@ export class ModifyPerson extends Component {
     super(props)
     this.state = {      
       person: "",
-      originalPerson: ""
+      originalPerson: "Edit Person Name"
     }
     this.handlePersonEdit = this.handlePersonEdit.bind(this)
     this.handlePersonChange = this.handlePersonChange.bind(this)
@@ -28,12 +28,12 @@ export class ModifyPerson extends Component {
     this.props.onPersonEdit({
       name: this.state.person, 
       originalName: this.state.originalPerson})
-    this.setState({person: "", originalPerson: ""})   
+    this.setState({person: "", originalPerson: "Edit person name"})   
   }
 
   handlePersonDelete = () => {
     this.props.onPersonDelete({name: this.state.originalPerson})
-    this.setState({ originalPerson: "" })
+    this.setState({ originalPerson: "Edit person name" })
   }
 
   render() {   
@@ -51,7 +51,7 @@ export class ModifyPerson extends Component {
               value={this.state.person}
               onChange={this.handlePersonChange}
               placeholder={this.state.originalPerson}
-              label="Edit person name" 
+              label={this.state.originalPerson} 
               margin="normal"
               id="person-edit" />
           </Grid>  
