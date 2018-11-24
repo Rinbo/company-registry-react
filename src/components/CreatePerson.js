@@ -33,8 +33,9 @@ export class CreatePerson extends Component {
       <div>
         <Grid container direction="column">
           <Grid item lg>
-            <TextField 
-              label="Enter Name of Person" 
+            <TextField
+              label="Enter Name of Person"
+              required={true}
               value={this.state.person} 
               placeholder="Name" 
               margin="normal" 
@@ -59,5 +60,9 @@ export class CreatePerson extends Component {
     )
   }
 }
+
+const inputProps = {
+  min: 1
+};
 
 export default CreatePerson

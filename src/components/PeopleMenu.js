@@ -17,7 +17,7 @@ export class PeopleMenu extends Component {
           value={this.props.personSelect}
           onChange={this.handleSelect}           
           inputProps={{
-            company: 'people-menu',
+            people: 'people-menu',
             id: 'people-menu',
           }}
           >
