@@ -7,13 +7,13 @@ export class EmployeeList extends Component {
 
   constructor(props) {
     super(props)
-    this.handlePersonDelete = this.handlePersonDelete.bind(this)
+    this.handleEmployeeDelete = this.handleEmployeeDelete.bind(this)
     this.handleViewSelect = this.handleViewSelect.bind(this)
   }
 
-  handlePersonDelete = person => {
+  handleEmployeeDelete = person => {
     person.company = ""
-    this.props.onPersonDelete(person)
+    this.props.onEmployeeDelete(person)
   }
 
   handleViewSelect = () => {
@@ -32,7 +32,7 @@ export class EmployeeList extends Component {
             </ListItemIcon>
             <ListItemText primary={person.name}/>
             <ListItemSecondaryAction>                                    
-              <IconButton aria-label="Delete" onClick={() => this.handlePersonDelete(person)}>
+              <IconButton aria-label="Delete" onClick={() => this.handleEmployeeDelete(person)}>
                 <DeleteIcon  />
               </IconButton>
             </ListItemSecondaryAction>

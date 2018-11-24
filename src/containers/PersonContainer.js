@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import CreatePerson from '../components/CreatePerson';
-import {Tab, Tabs, Typography, MenuItem} from '@material-ui/core';
+import {Tab, Tabs, Typography} from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
+import ModifyPerson from '../components/ModifyPerson';
 
 function TabContainer({ children, dir }) {
   return (
@@ -15,6 +16,7 @@ export class PersonContainer extends Component {
   
   constructor(props) {
     super(props)
+    
     this.state = {
       value: 0
     }
@@ -27,12 +29,9 @@ export class PersonContainer extends Component {
   handleChangeIndex = index => {
     this.setState({ value: index });
   };  
-  
+ 
   render() {
-
-    const companyList = this.props.companies.map((company) => {
-      return <MenuItem value={company} key={company}>{company}</MenuItem>
-    })
+    
     return (
       <div style={{padding: 0}}>
         <div>
@@ -52,12 +51,20 @@ export class PersonContainer extends Component {
           onChangeIndex={this.handleChangeIndex}>
           <TabContainer dir='x'>
             <CreatePerson 
-              onPersonSave={this.props.onPersonSave} 
-              companyList={companyList} 
+              onPersonCreate={this.props.onPersonCreate} 
+              companyList={this.props.companyList} 
               onCompanyChange={this.props.onCompanyChange} 
               companyInput={this.props.companyInput} />          
           </TabContainer>
-          <TabContainer dir='x'>Item Two</TabContainer>
+          <TabContainer dir='x'>
+            <ModifyPerson 
+                onPersonSave={this.props.onPersonSave} 
+                companyList={this.props.companyList} 
+                onCompanyChange={this.props.onCompanyChange} 
+                companyInput={this.props.companyInput}
+                modifyView={this.handleChange }
+                selectedPerson={this.props.selectedPerson} />               
+          </TabContainer>
         </SwipeableViews>
       </div>
     )

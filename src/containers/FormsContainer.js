@@ -4,7 +4,7 @@ import { ListContainer } from './ListContainer'
 import { PersonContainer } from './PersonContainer'
 import { PeopleList } from '../components/PeopleList'
 import { CrAppBar } from '../components/CrAppBar'
-import { Paper } from '@material-ui/core'
+import { Paper, MenuItem } from '@material-ui/core'
 
 export class FormsContainer extends Component {
   constructor(props) {
@@ -19,8 +19,9 @@ export class FormsContainer extends Component {
     }
     this.handleCompanyInput = this.handleCompanyInput.bind(this)
     this.handleCompanySave = this.handleCompanySave.bind(this)
-    this.handlePersonSave = this.handlePersonSave.bind(this)
-    this.handlePersonDelete = this.handlePersonDelete.bind(this)
+    this.handlePersonCreate = this.handlePersonCreate.bind(this)
+    this.handleEmployeeDelete = this.handleEmployeeDelete.bind(this)
+    this.handleCompanyAssign = this.handleCompanyAssign.bind(this)
   }
 
   handleCompanyInput = e => {
@@ -32,11 +33,11 @@ export class FormsContainer extends Component {
 
   }
 
-  handlePersonSave = newPeopleEntry => {
+  handlePersonCreate = newPeopleEntry => {
     this.setState({ people: [...this.state.people, newPeopleEntry], companyInput: ""  })
   }
 
-  handlePersonDelete = person => {
+  handleEmployeeDelete = person => {
     let peopleArray = this.state.people
     peopleArray.map( e => {
       if (e === person) {
@@ -46,6 +47,20 @@ export class FormsContainer extends Component {
         return e
       }
     })
+    this.setState({people: peopleArray})
+  }
+
+  handleCompanyAssign = person => {
+    let peopleArray = this.state.people
+    debugger
+    peopleArray.map( e => {
+      if (e.name === person.name) {
+        e.company = person.company
+        return e
+      } else {
+        return e
+      }
+    })    
     this.setState({people: peopleArray})
   }
 
@@ -62,6 +77,10 @@ export class FormsContainer extends Component {
   }
       
   render() {
+    const companyList = this.state.companies.map((company) => {
+      return <MenuItem value={company} key={company}>{company}</MenuItem>
+    })
+
     return (
       <div >
         <CrAppBar title="Company Registry"/>
@@ -70,15 +89,22 @@ export class FormsContainer extends Component {
           <ListContainer 
             companies={this.state.companies} 
             people={this.state.people} 
-            onPersonDelete={this.handlePersonDelete}/>
+            onEmployeeDelete={this.handleEmployeeDelete}/>
         </Paper>
         <Paper className="grid-container">
           <PersonContainer 
-            onPersonSave={this.handlePersonSave} 
+            onPersonCreate={this.handlePersonCreate} 
             companies={this.state.companies} 
             onCompanyChange={this.handleCompanyInput} 
-            companyInput={this.state.companyInput} />
-          <PeopleList people={this.state.people}/>
+            companyInput={this.state.companyInput}
+            selectedPerson={this.state.selectedPerson}
+            onPersonSelect={this.handlePersonSelect} 
+            companyList={companyList}/>
+          <PeopleList 
+            people={this.state.people}
+            onCompanyAssign={this.handleCompanyAssign}
+            companyList={companyList}
+            />
         </Paper>
       </div>
     )

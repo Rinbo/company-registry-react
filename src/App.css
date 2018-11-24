@@ -30,6 +30,15 @@
   margin: 15px;
 }
 
+.cr-border {
+  border: solid black;
+}
+
+.dr-control {
+  width: 50%;
+  border: border black;
+}
+
 
 
 

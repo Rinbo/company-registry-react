@@ -30,7 +30,7 @@ export class ListContainer extends Component {
         company={this.state.company} 
         people={this.props.people} 
         onViewSelect={this.handleViewSelect}
-        onPersonDelete={ this.props.onPersonDelete } />
+        onEmployeeDelete={ this.props.onEmployeeDelete } />
     }
   }
 }

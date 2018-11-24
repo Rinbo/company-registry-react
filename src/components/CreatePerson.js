@@ -4,10 +4,10 @@ import CompanyMenu from './CompanyMenu';
 
 export class CreatePerson extends Component {
 
-  handlePersonSave = () => {
+  handlePersonCreate = () => {
     const personNameElement = document.getElementById('person-name')
     const personCompanyElement = document.getElementById('person-company')
-    this.props.onPersonSave({
+    this.props.onPersonCreate({
       name: personNameElement.value, 
       company: personCompanyElement.value
     })
@@ -20,7 +20,7 @@ export class CreatePerson extends Component {
         <Grid container direction="column">
           <Grid item lg><TextField label="Enter Name of Person" placeholder="Name" margin="normal" id="person-name" /></Grid>   
           <Grid item lg><CompanyMenu companyList={this.props.companyList} onCompanyChange={this.props.onCompanyChange} companyInput={this.props.companyInput}/></Grid> 
-          <Grid item lg><Button color="primary" variant="contained" onClick={this.handlePersonSave}>Create</Button></Grid>           
+          <Grid item lg><Button color="primary" variant="contained" onClick={this.handlePersonCreate}>Create</Button></Grid>           
         </Grid>
       </div>
     )

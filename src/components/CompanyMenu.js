@@ -11,7 +11,7 @@ export default class CompanyMenu extends Component {
   render() {
     return (
       <FormControl>              
-        <InputLabel htmlFor="person-company">Select Company</InputLabel>
+        <InputLabel shrink={true} htmlFor="person-company">Select Company</InputLabel>
         <Select 
           className="cr-dropdown"
           value={this.props.companyInput}
