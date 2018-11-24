@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import {Table, TableHead, TableCell, TableBody, TableRow, Button} from '@material-ui/core'
 
 export default class PeopleTable extends Component {
-  
-  handlePersonSelect = (person) => {
-    this.props.onPersonSelect(person)
-  }
 
   render() {
 
@@ -21,7 +17,7 @@ export default class PeopleTable extends Component {
           {this.props.people.map(row => {
             if (row.company === "") {
               return (
-              <TableRow key={row.name} onclick={() => this.handlePersonSelect(row.name)}>
+              <TableRow key={row.name}>
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>

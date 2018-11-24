@@ -14,23 +14,18 @@ export class FormsContainer extends Component {
         {name: "Robin Börjesson", company: "Volvo" },
         {name: "Sixten Börjesson", company: "Saab" }
       ],
-      companies: ["Volvo", "Saab"],
-      companyInput: ""
+      companies: ["Volvo", "Saab"]
     }
-    this.handleCompanyInput = this.handleCompanyInput.bind(this)
     this.handleCompanySave = this.handleCompanySave.bind(this)
     this.handlePersonCreate = this.handlePersonCreate.bind(this)
     this.handleEmployeeDelete = this.handleEmployeeDelete.bind(this)
     this.handleCompanyAssign = this.handleCompanyAssign.bind(this)
-  }
-
-  handleCompanyInput = e => {
-    this.setState({companyInput: e.target.value})
+    this.handlePersonEdit = this.handlePersonEdit.bind(this)
+    this.handlePersonDelete = this.handlePersonDelete.bind(this)
   }
 
   handleCompanySave = e => {
     this.setState({ companies: [...this.state.companies, e] })
-
   }
 
   handlePersonCreate = newPeopleEntry => {
@@ -38,7 +33,7 @@ export class FormsContainer extends Component {
   }
 
   handleEmployeeDelete = person => {
-    let peopleArray = this.state.people
+    const peopleArray = this.state.people
     peopleArray.map( e => {
       if (e === person) {
         e.company = ""
@@ -51,8 +46,7 @@ export class FormsContainer extends Component {
   }
 
   handleCompanyAssign = person => {
-    let peopleArray = this.state.people
-    debugger
+    const peopleArray = this.state.people
     peopleArray.map( e => {
       if (e.name === person.name) {
         e.company = person.company
@@ -64,13 +58,30 @@ export class FormsContainer extends Component {
     this.setState({people: peopleArray})
   }
 
+  handlePersonEdit = person => {
+    const peopleArray = this.state.people
+    peopleArray.map( e => {
+      if (e.name === person.originalName) {        
+        e.name = person.name
+        return e
+      } else {
+        return e
+      }
+    })    
+    this.setState({people: peopleArray})
+  }
+
+  handlePersonDelete = person => {
+    const peopleArray = this.state.people.filter( e => e.name !== person.name)
+    this.setState({people: peopleArray})    
+  }
+
   componentWillMount = () => {
     localStorage.getItem('savedState') && this.setState({
       people: JSON.parse(localStorage.getItem('savedState')).people,
       companies: JSON.parse(localStorage.getItem('savedState')).companies
     })
   }
-  
 
   componentWillUpdate = (nextProps, nextState) => {
     localStorage.setItem('savedState', JSON.stringify(nextState))    
@@ -79,6 +90,10 @@ export class FormsContainer extends Component {
   render() {
     const companyList = this.state.companies.map((company) => {
       return <MenuItem value={company} key={company}>{company}</MenuItem>
+    })
+
+    const peopleList = this.state.people.map((person) => {
+      return <MenuItem value={person.name} key={'menu-' + person.name}>{person.name}</MenuItem>
     })
 
     return (
@@ -93,13 +108,11 @@ export class FormsContainer extends Component {
         </Paper>
         <Paper className="grid-container">
           <PersonContainer 
-            onPersonCreate={this.handlePersonCreate} 
-            companies={this.state.companies} 
-            onCompanyChange={this.handleCompanyInput} 
-            companyInput={this.state.companyInput}
-            selectedPerson={this.state.selectedPerson}
-            onPersonSelect={this.handlePersonSelect} 
-            companyList={companyList}/>
+            onPersonCreate={this.handlePersonCreate}
+            onPersonEdit={this.handlePersonEdit}
+            onPersonDelete={this.handlePersonDelete}           
+            companyList={companyList}
+            peopleList={peopleList}/>
           <PeopleList 
             people={this.state.people}
             onCompanyAssign={this.handleCompanyAssign}

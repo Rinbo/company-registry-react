@@ -1,34 +1,34 @@
 import React, { Component } from 'react'
 import {Select, FormControl, InputLabel, MenuItem } from '@material-ui/core'
 
-export class CompanyMenu extends Component {
+export class PeopleMenu extends Component {
   
-  handleChange = e => {
+  handleSelect = e => {
     e.preventDefault()
-    this.props.onCompanyChange(e)
+    this.props.onPersonSelect(e)
   };
   
   render() {
     return (
       <FormControl>              
-        <InputLabel htmlFor="person-company">Select Company</InputLabel>
+        <InputLabel htmlFor="people-menu">Select person to edit</InputLabel>
         <Select 
           className="cr-dropdown"
-          value={this.props.companyInput}
-          onChange={this.handleChange}           
+          value={this.props.personSelect}
+          onChange={this.handleSelect}           
           inputProps={{
-            company: 'company',
-            id: 'person-company',
+            company: 'people-menu',
+            id: 'people-menu',
           }}
           >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {this.props.companyList}
+          {this.props.peopleList}
         </Select>
       </FormControl>
     )
   }
 }
 
-export default CompanyMenu
+export default PeopleMenu

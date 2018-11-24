@@ -58,12 +58,9 @@ export class PersonContainer extends Component {
           </TabContainer>
           <TabContainer dir='x'>
             <ModifyPerson 
-                onPersonSave={this.props.onPersonSave} 
-                companyList={this.props.companyList} 
-                onCompanyChange={this.props.onCompanyChange} 
-                companyInput={this.props.companyInput}
-                modifyView={this.handleChange }
-                selectedPerson={this.props.selectedPerson} />               
+              onPersonEdit={this.props.onPersonEdit}
+              onPersonDelete={this.props.onPersonDelete} 
+              peopleList={this.props.peopleList} />               
           </TabContainer>
         </SwipeableViews>
       </div>
