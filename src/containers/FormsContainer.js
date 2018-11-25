@@ -76,10 +76,19 @@ export class FormsContainer extends Component {
   }
 
   handleCompanyEdit = company => {
+    const peopleArray = this.state.people.map (e => {
+      if (e.company === company.originalName) {
+         e.company = company.name
+         return e
+      } else {
+        return e
+      }
+
+    })
     const companyArray = this.state.companies.map( e=> {
       return (e === company.originalName) ? company.name : e     
     })
-    this.setState({companies: companyArray})
+    this.setState({companies: companyArray, people: peopleArray})
   }
 
   handleCompanyDelete = company => {
