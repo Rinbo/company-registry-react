@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PeopleMenu from './PeopleMenu';
-import { Grid, TextField, Button} from '@material-ui/core'
+import { Grid, Button} from '@material-ui/core'
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 export class ModifyPerson extends Component {
 
@@ -38,7 +39,10 @@ export class ModifyPerson extends Component {
 
   render() {   
     return (
-      <div>
+      <ValidatorForm                
+              ref="form"
+              onSubmit={this.handlePersonEdit}
+              onError={errors => console.log(errors)} >
         <Grid container direction="column">
           <Grid item lg>
             <PeopleMenu 
@@ -47,19 +51,23 @@ export class ModifyPerson extends Component {
               personSelect={this.state.originalPerson}/>
           </Grid> 
           <Grid item lg>
-            <TextField
+            <TextValidator
+              name="person"
+              type="text" 
               required={true}
               value={this.state.person}
               onChange={this.handlePersonChange}
               label="Edit person name"
               margin="normal"
-              id="person-edit" />
+              id="person-edit"
+              validators={['required']}
+              errorMessages={['this field is required']} />
           </Grid>  
           <Grid item lg>
             <Button 
               color="primary" 
               variant="contained" 
-              onClick={this.handlePersonEdit} 
+              type="submit" 
               style={{marginRight: 10}}>
                 Save
             </Button>
@@ -72,7 +80,7 @@ export class ModifyPerson extends Component {
             </Button>
           </Grid>          
         </Grid>
-      </div>
+      </ValidatorForm>
     )
   }
 }

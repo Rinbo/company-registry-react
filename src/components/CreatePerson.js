@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, TextField, Button} from '@material-ui/core'
+import { Grid, Button} from '@material-ui/core'
 import CompanyMenu from './CompanyMenu';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
@@ -59,8 +59,7 @@ export class CreatePerson extends Component {
             <Button
               type="submit" 
               color="primary" 
-              variant="contained" 
-              onClick={this.handlePersonCreate}>
+              variant="contained">
               Create
             </Button>
           </Grid>           

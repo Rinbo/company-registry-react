@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Typography, Grid, Button, TextField} from '@material-ui/core/'
+import {Typography, Grid, Button} from '@material-ui/core/'
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 export class CreateCompany extends Component {
 
@@ -23,7 +24,10 @@ export class CreateCompany extends Component {
 
   render() {
     return (
-      <div>
+      <ValidatorForm                
+        ref="form"
+        onSubmit={this.handleCompanyCreate}
+        onError={errors => console.log(errors)} >
         <Grid container direction="column">
           <Grid item lg>
             <Typography 
@@ -33,26 +37,30 @@ export class CreateCompany extends Component {
             </Typography>
           </Grid>
           <Grid item lg>
-          <TextField
+          <TextValidator
+            type="text"
+            name="company"
             value={this.state.company}
             onChange={this.handleCompanyChange}
             required 
             label="Enter Company Name" 
             placeholder="Company Name" 
             id="company-name" 
-            margin="normal" />          
+            margin="normal" 
+            validators={['required']}
+            errorMessages={['this field is required']}/>          
           </Grid>
           <Grid item lg>
-            <Button 
+            <Button
+              type="submit"
               variant="contained" 
               color="primary" 
-              className="cr-button-primary" 
-              onClick={this.handleCompanyCreate}>
+              className="cr-button-primary">
                 Save
             </Button>
           </Grid>
         </Grid>
-      </div>
+      </ValidatorForm>
     )
   }
 }
