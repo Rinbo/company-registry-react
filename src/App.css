@@ -2,11 +2,11 @@
   text-align: center;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1200px) {
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 30vh;
+    grid-template-rows: 35vh;
     grid-column-gap: 50px;
     max-width: 1200px;
     margin: 50px auto;
@@ -16,7 +16,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .grid-container {
     display: grid;
     grid-template-columns: 100%;
