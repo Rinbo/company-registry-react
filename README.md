@@ -22,6 +22,8 @@ cd company-registry-react
 - List all people no assigned to companies with option to assign them to a company
 - Fully responsive design including swiping gestures on a mobile device
 
+- ![](cr.gif)
+
 ## Storage
 - Entered data is stored in browser local storage
 
