@@ -33,7 +33,7 @@ export class PersonContainer extends Component {
   render() {
     
     return (
-      <div style={{padding: 0}}>
+      <div style={{padding: 0, margin: 0}}>
         <div>
           <Tabs
             value={this.state.value}

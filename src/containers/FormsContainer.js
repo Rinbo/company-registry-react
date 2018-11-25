@@ -16,7 +16,7 @@ export class FormsContainer extends Component {
       ],
       companies: ["Volvo", "Saab"]
     }
-    this.handleCompanySave = this.handleCompanySave.bind(this)
+    this.handleCompanyCreate = this.handleCompanyCreate.bind(this)
     this.handlePersonCreate = this.handlePersonCreate.bind(this)
     this.handleEmployeeDelete = this.handleEmployeeDelete.bind(this)
     this.handleCompanyAssign = this.handleCompanyAssign.bind(this)
@@ -24,12 +24,12 @@ export class FormsContainer extends Component {
     this.handlePersonDelete = this.handlePersonDelete.bind(this)
   }
 
-  handleCompanySave = e => {
+  handleCompanyCreate = e => {
     this.setState({ companies: [...this.state.companies, e] })
   }
 
   handlePersonCreate = newPeopleEntry => {
-    this.setState({ people: [...this.state.people, newPeopleEntry], companyInput: ""  })
+    this.setState({ people: [...this.state.people, newPeopleEntry]})
   }
 
   handleEmployeeDelete = person => {
@@ -89,7 +89,7 @@ export class FormsContainer extends Component {
       
   render() {
     const companyList = this.state.companies.map((company) => {
-      return <MenuItem value={company} key={company}>{company}</MenuItem>
+      return <MenuItem value={company} key={'menu-' + company}>{company}</MenuItem>
     })
 
     const peopleList = this.state.people.map((person) => {
@@ -100,7 +100,7 @@ export class FormsContainer extends Component {
       <div >
         <CrAppBar title="Company Registry"/>
         <Paper className="grid-container">
-          <CreateCompany onCompanySave={this.handleCompanySave} />
+          <CreateCompany onCompanyCreate={this.handleCompanyCreate} />
           <ListContainer 
             companies={this.state.companies} 
             people={this.state.people} 

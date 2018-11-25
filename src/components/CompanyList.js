@@ -15,7 +15,7 @@ export class CompanyList extends Component {
 
   render() {
 
-    const listCompanies = this.props.companies.map((company) => {
+    const companyList = this.props.companies.map((company) => {
       return (
         <ListItem key={company} button onClick={() => this.handleCompanySelect(company)}>
           <ListItemIcon>
@@ -25,11 +25,11 @@ export class CompanyList extends Component {
         </ListItem>
       )
     })
-
+    
     return (
       <div>
         <Typography variant="headline">Companies</Typography>
-        <List className="cr-company-list">{listCompanies}</List>
+        <List className="cr-company-list">{companyList}</List>
       </div>
     )
   }
