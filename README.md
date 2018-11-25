@@ -19,7 +19,7 @@ cd company-registry-react
 - Modify or delete a person
 - List employees of a particular company with option to remove them from that company 
 - List all people assigned to companies
-- List all people no assigned to companies with option to assign them to a company
+- List all people not assigned to companies with option to assign them to a company
 - Fully responsive design including swiping gestures on a mobile device
 
 - ![](cr.gif)
