@@ -3,9 +3,9 @@ import {Select, FormControl, InputLabel, MenuItem } from '@material-ui/core'
 
 export class CompanyMenu extends Component {
   
-  handleChange = e => {
+  handleSelect = e => {
     e.preventDefault()
-    this.props.onCompanyChange(e)
+    this.props.onCompanySelect(e)
   };
   
   render() {
@@ -14,8 +14,8 @@ export class CompanyMenu extends Component {
         <InputLabel htmlFor="person-company">Select Company</InputLabel>
         <Select 
           className="cr-dropdown"
-          value={this.props.companyInput}
-          onChange={this.handleChange}           
+          value={this.props.companySelect}
+          onChange={this.handleSelect}           
           inputProps={{
             company: 'company',
             id: 'person-company',

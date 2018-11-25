@@ -23,7 +23,7 @@ export class AssignmentList extends Component {
     this.setState({view: 0})
   }
 
-  handleCompanyChange = e => {
+  handleCompanySelect = e => {
     this.setState({company: e.target.value})
   }
 
@@ -42,7 +42,7 @@ export class AssignmentList extends Component {
           <Grid item lg>
             <PeopleTable 
               people={unAssignedPeople} 
-              onCompanyChange={this.handleCompanyChange} 
+              onCompanyChange={this.handleCompanySelect} 
               companyList={this.props.companyList}
               companyInput={this.state.company}
               onPersonSelect={this.handlePersonSelect}
@@ -63,8 +63,8 @@ export class AssignmentList extends Component {
           <Grid item lg>
             <CompanyMenu 
               companyList={this.props.companyList} 
-              onCompanyChange={this.handleCompanyChange} 
-              companyInput={this.state.company}/>
+              onCompanySelect={this.handleCompanySelect} 
+              companySelect={this.state.company}/>
           </Grid> 
           <Grid item lg>
             <Button 

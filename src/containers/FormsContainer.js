@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { CreateCompany } from '../components/CreateCompany'
 import { ListContainer } from './ListContainer'
 import { PersonContainer } from './PersonContainer'
 import { PeopleList } from '../components/PeopleList'
 import { CrAppBar } from '../components/CrAppBar'
 import { Paper, MenuItem } from '@material-ui/core'
+import CompanyContainer from './CompanyContainer';
 
 export class FormsContainer extends Component {
   constructor(props) {
@@ -22,6 +22,8 @@ export class FormsContainer extends Component {
     this.handleCompanyAssign = this.handleCompanyAssign.bind(this)
     this.handlePersonEdit = this.handlePersonEdit.bind(this)
     this.handlePersonDelete = this.handlePersonDelete.bind(this)
+    this.handleCompanyDelete = this.handleCompanyDelete.bind(this)
+    this.handleCompanyEdit = this.handleCompanyEdit.bind(this)
   }
 
   handleCompanyCreate = e => {
@@ -33,8 +35,7 @@ export class FormsContainer extends Component {
   }
 
   handleEmployeeDelete = person => {
-    const peopleArray = this.state.people
-    peopleArray.map( e => {
+    const peopleArray = this.state.people.map( e => {
       if (e === person) {
         e.company = ""
         return e
@@ -46,8 +47,7 @@ export class FormsContainer extends Component {
   }
 
   handleCompanyAssign = person => {
-    const peopleArray = this.state.people
-    peopleArray.map( e => {
+    const peopleArray = this.state.people.map( e => {
       if (e.name === person.name) {
         e.company = person.company
         return e
@@ -59,8 +59,7 @@ export class FormsContainer extends Component {
   }
 
   handlePersonEdit = person => {
-    const peopleArray = this.state.people
-    peopleArray.map( e => {
+    const peopleArray = this.state.people.map( e => {
       if (e.name === person.originalName) {        
         e.name = person.name
         return e
@@ -74,6 +73,26 @@ export class FormsContainer extends Component {
   handlePersonDelete = person => {
     const peopleArray = this.state.people.filter( e => e.name !== person.name)
     this.setState({people: peopleArray})    
+  }
+
+  handleCompanyEdit = company => {
+    const companyArray = this.state.companies.map( e=> {
+      return (e === company.originalName) ? company.name : e     
+    })
+    this.setState({companies: companyArray})
+  }
+
+  handleCompanyDelete = company => {
+    const peopleArray = this.state.people.map( e => {
+      if (e.company === company.name) {
+        e.company = ""
+        return e
+      } else {
+        return e
+      }
+    })
+    const companyArray = this.state.companies.filter( e => e !== company.name)
+    this.setState({companies: companyArray, people: peopleArray})
   }
 
   componentWillMount = () => {
@@ -100,7 +119,11 @@ export class FormsContainer extends Component {
       <div >
         <CrAppBar title="Company Registry"/>
         <Paper className="grid-container">
-          <CreateCompany onCompanyCreate={this.handleCompanyCreate} />
+          <CompanyContainer 
+            onCompanyCreate={this.handleCompanyCreate}
+            onCompanyEdit={this.handleCompanyEdit}
+            companyList={companyList}
+            onCompanyDelete={this.handleCompanyDelete} />
           <ListContainer 
             companies={this.state.companies} 
             people={this.state.people} 

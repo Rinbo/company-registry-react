@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import CreatePerson from '../components/CreatePerson';
-import {Tab, Tabs, Typography} from '@material-ui/core';
-import SwipeableViews from 'react-swipeable-views';
-import ModifyPerson from '../components/ModifyPerson';
+import {Tab, Tabs, Typography} from '@material-ui/core'
+import SwipeableViews from 'react-swipeable-views'
+import CreateCompany from '../components/CreateCompany'
+import ModifyCompany from '../components/ModifyCompany'
 
 function TabContainer({ children, dir }) {
+
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
       {children}
@@ -12,7 +13,7 @@ function TabContainer({ children, dir }) {
   );
 }
 
-export class PersonContainer extends Component {
+export class CompanyContainer extends Component {
   
   constructor(props) {
     super(props)
@@ -30,8 +31,9 @@ export class PersonContainer extends Component {
     this.setState({ value: index });
   };  
  
+
+
   render() {
-    
     return (
       <div style={{padding: 0, margin: 0}}>
         <div>
@@ -41,8 +43,8 @@ export class PersonContainer extends Component {
             indicatorColor="primary"
             textColor="primary"
             fullWidth>
-            <Tab label="Add Person" />
-            <Tab label="Modify Person" />
+            <Tab label="Add Company" />
+            <Tab label="Modify Company" />
           </Tabs>
         </div>
         <SwipeableViews
@@ -50,15 +52,14 @@ export class PersonContainer extends Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}>
           <TabContainer dir='x'>
-            <CreatePerson 
-              onPersonCreate={this.props.onPersonCreate} 
-              companyList={this.props.companyList} />          
+            <CreateCompany 
+              onCompanyCreate={this.props.onCompanyCreate} />
           </TabContainer>
           <TabContainer dir='x'>
-            <ModifyPerson 
-              onPersonEdit={this.props.onPersonEdit}
-              onPersonDelete={this.props.onPersonDelete} 
-              peopleList={this.props.peopleList} />               
+            <ModifyCompany 
+              onCompanyEdit={this.props.onCompanyEdit}
+              onCompanyDelete={this.props.onCompanyDelete} 
+              companyList={this.props.companyList} />               
           </TabContainer>
         </SwipeableViews>
       </div>
@@ -66,8 +67,4 @@ export class PersonContainer extends Component {
   }
 }
 
-export default PersonContainer
-
-
-
- 
+export default CompanyContainer

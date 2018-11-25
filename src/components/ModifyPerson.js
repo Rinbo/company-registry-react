@@ -29,12 +29,22 @@ export class ModifyPerson extends Component {
     this.props.onPersonEdit({
       name: this.state.person, 
       originalName: this.state.originalPerson})
-    this.setState({person: "", originalPerson: ""})   
+    this.setState({person: "", originalPerson: ""})    
   }
 
   handlePersonDelete = () => {
     this.props.onPersonDelete({name: this.state.originalPerson})
     this.setState({ originalPerson: "" })
+  }
+
+  componentDidMount() {
+    ValidatorForm.addValidationRule('isPersonSelect', (value) => {
+        debugger
+        if (value && this.state.originalPerson === "") {
+            return false;
+        }
+        return true;
+    });
   }
 
   render() {   
@@ -60,8 +70,8 @@ export class ModifyPerson extends Component {
               label="Edit person name"
               margin="normal"
               id="person-edit"
-              validators={['required']}
-              errorMessages={['this field is required']} />
+              validators={['isPersonSelect', 'required']}
+              errorMessages={['you must select a person','this field is required']} />
           </Grid>  
           <Grid item lg>
             <Button 

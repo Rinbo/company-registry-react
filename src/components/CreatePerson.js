@@ -13,14 +13,14 @@ export class CreatePerson extends Component {
     }
     this.handlePersonCreate = this.handlePersonCreate.bind(this)
     this.handlePersonChange = this.handlePersonChange.bind(this)
-    this.handleCompanyChange = this.handleCompanyChange.bind(this)
+    this.handleCompanySelect = this.handleCompanySelect.bind(this)
   } 
   
   handlePersonChange = (e) => {
     this.setState({person: e.target.value})
   }
 
-  handleCompanyChange = (e) => {
+  handleCompanySelect = (e) => {
     this.setState({company: e.target.value})
   }
 
@@ -52,8 +52,8 @@ export class CreatePerson extends Component {
           <Grid item lg>
             <CompanyMenu 
               companyList={this.props.companyList} 
-              onCompanyChange={this.handleCompanyChange} 
-              companyInput={this.state.company}/>
+              onCompanySelect={this.handleCompanySelect} 
+              companySelect={this.state.company}/>
           </Grid> 
           <Grid item lg>
             <Button
